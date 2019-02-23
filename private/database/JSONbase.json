@@ -1,0 +1,94 @@
+{
+  "metadata": {
+    "nextID": 5,
+    "totalItems": 5
+  },
+  "venues": [
+    {
+      "name": "Golden Pub",
+      "countryCode": "BA",
+      "city": "Mostar",
+      "street": "Kneza Branimira bb",
+      "inventory": {
+        "metadata": {
+          "nextID": 0,
+          "totalItems": 0
+        },
+        "items": null
+      },
+      "orders": null,
+      "map": null,
+      "dateAdded": "2019|2|21-14:36:51:190",
+      "lastUpdate": "2019|2|21-14:36:51:190",
+      "ID": 0
+    },
+    {
+      "name": "Teco",
+      "countryCode": "BA",
+      "city": "Mostar",
+      "street": "Kardinala Stepinca bb",
+      "inventory": {
+        "metadata": {
+          "nextID": 0,
+          "totalItems": 0
+        },
+        "items": null
+      },
+      "orders": null,
+      "staff": null,
+      "map": null,
+      "dateAdded": "2019|2|21-18:40:11:240",
+      "lastUpdate": "2019|2|21-18:40:11:240",
+      "ID": 1
+    },
+    {
+      "inventory": {
+        "metadata": {
+          "nextID": 0,
+          "totalItems": 0
+        },
+        "items": null
+      },
+      "orders": null,
+      "staff": null,
+      "map": null,
+      "dateAdded": "2019|2|21-18:47:32:494",
+      "lastUpdate": "2019|2|21-18:47:32:494",
+      "ID": 2
+    },
+    {
+      "inventory": {
+        "metadata": {
+          "nextID": 0,
+          "totalItems": 0
+        },
+        "items": null
+      },
+      "orders": null,
+      "staff": null,
+      "map": null,
+      "dateAdded": "2019|2|21-18:47:56:405",
+      "lastUpdate": "2019|2|21-18:47:56:405",
+      "ID": 3
+    },
+    {
+      "name": "Crni Mačak",
+      "countryCode": "BA",
+      "city": "Vitez",
+      "street": "Neka Ulica bb",
+      "inventory": {
+        "metadata": {
+          "nextID": 0,
+          "totalItems": 0
+        },
+        "items": null
+      },
+      "orders": null,
+      "staff": null,
+      "map": null,
+      "dateAdded": "2019|2|21-18:55:24:608",
+      "lastUpdate": "2019|2|21-18:55:24:608",
+      "ID": 4
+    }
+  ]
+}
