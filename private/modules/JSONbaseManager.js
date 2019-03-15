@@ -10,7 +10,8 @@ class JSONbaseManager {
       metadata: {
         nextID: 0,
         totalItems: 0,
-      }
+      },
+      venues: []
     };
   };
 

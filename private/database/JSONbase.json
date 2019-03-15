@@ -1,7 +1,27 @@
-﻿{
+{
   "metadata": {
-    "nextID": 0,
-    "totalItems": 0
+    "nextID": 1,
+    "totalItems": 1
   },
-  "venues": []
+  "venues": [
+    {
+      "name": "Song",
+      "countryCode": "BA",
+      "city": "Mostar",
+      "street": "Neka Ulica bb",
+      "inventory": {
+        "metadata": {
+          "nextID": 0,
+          "totalItems": 0
+        },
+        "items": null
+      },
+      "orders": null,
+      "staff": null,
+      "map": null,
+      "dateAdded": "2019|3|15-1:8:16:83",
+      "lastUpdate": "2019|3|15-1:8:16:83",
+      "ID": 0
+    }
+  ]
 }
