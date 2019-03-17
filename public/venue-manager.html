@@ -6,12 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./css/style.css">
-  <title>Register</title>
+  <title>Venue Manager</title>
 </head>
 
 <body>
-  <h1>Registration form</h1>
-  <form action="/register-new-venue" method="post" spellcheck="false" autocomplete="off">
+  <h1>Venue Manager</h1>
+  <h2>Welcome!</h2>
+  <h3>Enter venue data below and click "Manage venue"</h3>
+  <form action="/manage-venue" method="post" spellcheck="false" autocomplete="off">
     Name of Establishment<br><input type="text" name="venueName" id="name" spellcheck="false" autocomplete="off"
       maxlength="25"><br>
     Country Code<br><input type="text" name="countryTag" id="countryTag" spellcheck="false" autocomplete="off"
@@ -21,9 +23,8 @@
       maxlength="25"><br>
     Administartor<br><input type="text" name="administrator" id="administrator" spellcheck="false" autocomplete="off"
     maxlength="25"><br>
-    <input type="submit" value="Register" class="button" id="registerButton">
+    <input type="submit" value="Manage venue" class="button" id="registerButton">
   </form>
 </body>
-<script src="./js/register.js"></script>
-
+<script src="./js/venue-manager.js"></script>
 </html>

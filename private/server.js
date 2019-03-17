@@ -46,7 +46,8 @@ app.post("/register-new-venue", function (req, res) {
     req.body.venueName,
     req.body.countryTag,
     req.body.city,
-    req.body.street
+    req.body.street,
+    req.body.administrator
   );
   if (DBmanager.venueExists(newVenue)) {
     res.json({ status: "exists" });
@@ -56,8 +57,8 @@ app.post("/register-new-venue", function (req, res) {
     res.json({ status: "added" });
   }
 });
-app.post("/manage-venue", function (req, res) {
-  console.log(req.body);
+app.post("/venue-manager", function (req, res) {
+  
 });
 
 var server = app.listen(3000, function () {

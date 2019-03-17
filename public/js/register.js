@@ -30,6 +30,7 @@
   let nameInput = document.getElementById("name");
   let cityInput = document.getElementById("city");
   let streetInput = document.getElementById("street");
+  let adminInput = document.getElementById("administrator");
 
   let registerButton = document.getElementById("registerButton");
 
@@ -40,27 +41,31 @@
       nameInput.value !== "" &&
       codeInput.value.length == 2 && countryInput.value !== "" &&
       cityInput.value !== "" &&
-      streetInput.value !== ""
+      streetInput.value !== "" &&
+      adminInput.value !== ""
     ) {
       let data = {
         venueName: nameInput.value,
         countryTag: codeInput.value.toUpperCase(),
         city: cityInput.value,
-        street: streetInput.value
+        street: streetInput.value,
+        administrator: adminInput.value
       };
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
-        let registrationStatus = JSON.parse(request.response).status;
-        switch (registrationStatus) {
-          case "added": {
-            window.location.replace("./view-venue.html");
-            break;
+        if (this.readyState === 4 && this.status === 200) {
+          let registrationStatus = JSON.parse(request.response).status;
+          switch (registrationStatus) {
+            case "added": {
+              window.location.replace("./venue-manager.html");
+              break;
+            }
+            case "exists": {
+              alert("This venue is already in our database!");
+              break;
+            }
           }
-          case "exists": {
-            window.location.href = "./venue-exists.html";
-            break;
-          }
-        }
+        };
       };
       request.open("POST", "../register-new-venue");
       request.setRequestHeader("Content-type", "application/json");
