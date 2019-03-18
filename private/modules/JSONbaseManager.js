@@ -71,13 +71,23 @@ class JSONbaseManager {
   };
 
   venueExists(venue) {
-    let venueInfo = venue.name + venue.country + venue.city + venue.street;
+    let venueInfo = "";
+    venueInfo += venue.name;
+    venueInfo += venue.countryCode ;
+    venueInfo += venue.city;
+    venueInfo += venue.street;
+    venueInfo = venueInfo.toLowerCase().split(" ").join("");
 
     if (Object.keys(this.database).toLocaleString().includes("venues")) {
       for (let i = 0; i < this.database.venues.length; i++) {
-        let entryInfo = this.database.venues[i].name + this.database.venues[i].country + this.database.venues[i].city + this.database.venues[i].street;
+        let entryInfo = "";
+        entryInfo += this.database.venues[i].name;
+        entryInfo += this.database.venues[i].countryCode;
+        entryInfo += this.database.venues[i].city;
+        entryInfo += this.database.venues[i].street;
+        entryInfo = entryInfo.toLowerCase().split(" ").join("");
         if (entryInfo === venueInfo) {
-          return true;
+          return this.database.venues[i];
         }
       }
       return false;

@@ -11,20 +11,48 @@
 
 <body>
   <h1>Venue Manager</h1>
-  <h2>Welcome!</h2>
-  <h3>Enter venue data below and click "Manage venue"</h3>
-  <form action="/manage-venue" method="post" spellcheck="false" autocomplete="off">
-    Name of Establishment<br><input type="text" name="venueName" id="name" spellcheck="false" autocomplete="off"
-      maxlength="25"><br>
-    Country Code<br><input type="text" name="countryTag" id="countryTag" spellcheck="false" autocomplete="off"
-      maxlength="2"><input type="text" name="country" id="country" readonly disabled><br>
-    City<br><input type="text" name="city" id="city" spellcheck="false" autocomplete="off" maxlength="25"><br>
-    Street and Number<br><input type="text" name="street" id="street" spellcheck="false" autocomplete="off"
-      maxlength="25"><br>
-    Administartor<br><input type="text" name="administrator" id="administrator" spellcheck="false" autocomplete="off"
-    maxlength="25"><br>
-    <input type="submit" value="Manage venue" class="button" id="registerButton">
-  </form>
+  <div id="manager-form">
+    <h2>Welcome!</h2>
+    <h3>Enter venue data below and click "Manage venue."</h3>
+    <form action="/manage-venue" method="post" spellcheck="false" autocomplete="off">
+      Name of Establishment<br><input type="text" name="venueName" id="name" spellcheck="false" autocomplete="off"
+        maxlength="25"><br>
+      Country Code<br><input type="text" name="countryTag" id="countryTag" spellcheck="false" autocomplete="off"
+        maxlength="2"><input type="text" name="country" id="country" readonly disabled><br>
+      City<br><input type="text" name="city" id="city" spellcheck="false" autocomplete="off" maxlength="25"><br>
+      Street and Number<br><input type="text" name="street" id="street" spellcheck="false" autocomplete="off" maxlength="25"><br>
+      Administartor<br><input type="text" name="administrator" id="administrator" spellcheck="false" autocomplete="off"
+        maxlength="25"><br>
+      <input type="submit" value="Manage venue" class="button" id="manageButton">
+    </form>
+  </div>
+  <div id="edit-fields" style="display:initial">
+    <h3>Edit the fields below and click "Save changes" when you are done.</h3>
+    <form action="/edit-venue" method="post" spellcheck="false" autocomplete="off">
+      <div class="custom-checkbox-wrapper">
+        Venue is shown in search results:
+        <div class="custom-checkbox">
+          <input type="checkbox" name="isPublic" id="change-isPublic">
+          <label for="change-isPublic"></label>
+        </div>
+      </div>
+      Name of Establishment<br><input type="text" name="venueName" id="change-name" spellcheck="false" autocomplete="off"
+        maxlength="25"><br>
+      Country Code<br><input type="text" name="countryTag" id="change-countryTag" spellcheck="false" autocomplete="off"
+        maxlength="2"><input type="text" name="country" id="change-country" readonly disabled><br>
+      City<br><input type="text" name="city" id="change-city" spellcheck="false" autocomplete="off" maxlength="25"><br>
+      Street and Number<br><input type="text" name="street" id="change-street" spellcheck="false" autocomplete="off"
+        maxlength="25"><br>
+      <span class="navigation-bar">
+        <button>Inventory</button>
+        <button>Staff</button>
+        <button>Map</button>
+        <button>Administrators</button>
+      </span>
+      <input type="submit" value="Save changes" class="button" id="saveButton">
+    </form>
+  </div>
 </body>
 <script src="./js/venue-manager.js"></script>
+
 </html>

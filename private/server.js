@@ -58,7 +58,23 @@ app.post("/register-new-venue", function (req, res) {
   }
 });
 app.post("/venue-manager", function (req, res) {
-  
+  let newVenue = new Venue(
+    req.body.venueName,
+    req.body.countryTag,
+    req.body.city,
+    req.body.street,
+    req.body.administrator
+  );
+  let v = DBmanager.venueExists(newVenue);
+  if (v) {
+    if (v.administrators.includes(req.body.administrator)) {
+      res.json({ status: "found" });
+    } else {
+      res.json({ status: "denied" });
+    }
+  } else {
+    res.json({ status: "not found" });
+  }
 });
 
 var server = app.listen(3000, function () {

@@ -1,14 +1,15 @@
 {
   "metadata": {
-    "nextID": 2,
-    "totalItems": 2
+    "nextID": 1,
+    "totalItems": 1
   },
   "venues": [
     {
-      "name": "as",
-      "countryCode": "AS",
-      "city": "as",
-      "street": "as",
+      "name": "Golden Pub",
+      "countryCode": "BA",
+      "city": "Mostar",
+      "street": "Kneza Branimira bb",
+      "isPublic": false,
       "inventory": {
         "metadata": {
           "nextID": 0,
@@ -17,36 +18,14 @@
         "items": null
       },
       "orders": [],
-      "administartors": [
+      "administrators": [
         "admin"
       ],
       "staff": [],
       "map": null,
-      "dateAdded": "2019|3|17-19:38:31:334",
-      "lastUpdate": "2019|3|17-19:38:31:334",
+      "dateAdded": "2019|3|18-8:38:30:641",
+      "lastUpdate": "2019|3|18-8:38:30:641",
       "ID": 0
-    },
-    {
-      "name": "ba",
-      "countryCode": "BA",
-      "city": "ba",
-      "street": "ba",
-      "inventory": {
-        "metadata": {
-          "nextID": 0,
-          "totalItems": 0
-        },
-        "items": null
-      },
-      "orders": [],
-      "administartors": [
-        "ba"
-      ],
-      "staff": [],
-      "map": null,
-      "dateAdded": "2019|3|17-19:40:37:453",
-      "lastUpdate": "2019|3|17-19:40:37:453",
-      "ID": 1
     }
   ]
 }
