@@ -68,7 +68,11 @@ app.post("/venue-manager", function (req, res) {
   let v = DBmanager.venueExists(newVenue);
   if (v) {
     if (v.administrators.includes(req.body.administrator)) {
-      res.json({ status: "found" });
+      //res.json({ status: "found" });
+      res.write(JSON.stringify({status: "found"}));
+      res.write("NEWSTRING");
+      res.write(JSON.stringify(v));
+      res.end();
     } else {
       res.json({ status: "denied" });
     }

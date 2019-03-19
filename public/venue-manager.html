@@ -26,7 +26,7 @@
       <input type="submit" value="Manage venue" class="button" id="manageButton">
     </form>
   </div>
-  <div id="edit-fields" style="display:initial">
+  <div id="edit-fields" style="display:none">
     <h3>Edit the fields below and click "Save changes" when you are done.</h3>
     <form action="/edit-venue" method="post" spellcheck="false" autocomplete="off">
       <div class="custom-checkbox-wrapper">
@@ -36,6 +36,18 @@
           <label for="change-isPublic"></label>
         </div>
       </div>
+      <div id="ISMA-field">
+        <span class="navigation-bar">
+          <button class="navigation-button">Inventory</button>
+          <button class="navigation-button">Staff</button>
+          <button class="navigation-button">Map</button>
+          <button class="navigation-button">Administrators</button>
+        </span>
+        <div id="inventory" style="display:none">inv</div>
+        <div id="staff" style="display:none">staff</div>
+        <div id="map" style="display:none">map</div>
+        <div id="administrators" style="display:none">admins</div>
+      </div>
       Name of Establishment<br><input type="text" name="venueName" id="change-name" spellcheck="false" autocomplete="off"
         maxlength="25"><br>
       Country Code<br><input type="text" name="countryTag" id="change-countryTag" spellcheck="false" autocomplete="off"
@@ -43,12 +55,6 @@
       City<br><input type="text" name="city" id="change-city" spellcheck="false" autocomplete="off" maxlength="25"><br>
       Street and Number<br><input type="text" name="street" id="change-street" spellcheck="false" autocomplete="off"
         maxlength="25"><br>
-      <span class="navigation-bar">
-        <button>Inventory</button>
-        <button>Staff</button>
-        <button>Map</button>
-        <button>Administrators</button>
-      </span>
       <input type="submit" value="Save changes" class="button" id="saveButton">
     </form>
   </div>

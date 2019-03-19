@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "nextID": 1,
-    "totalItems": 1
+    "nextID": 2,
+    "totalItems": 2
   },
   "venues": [
     {
@@ -26,6 +26,29 @@
       "dateAdded": "2019|3|18-8:38:30:641",
       "lastUpdate": "2019|3|18-8:38:30:641",
       "ID": 0
+    },
+    {
+      "name": "Crni Mačak",
+      "countryCode": "BA",
+      "city": "Vitez",
+      "street": "Neka Ulica bb",
+      "isPublic": true,
+      "inventory": {
+        "metadata": {
+          "nextID": 0,
+          "totalItems": 0
+        },
+        "items": null
+      },
+      "orders": [],
+      "administrators": [
+        "admin"
+      ],
+      "staff": [],
+      "map": null,
+      "dateAdded": "2019|3|19-7:52:32:797",
+      "lastUpdate": "2019|3|19-7:52:32:797",
+      "ID": 1
     }
   ]
 }

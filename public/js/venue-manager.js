@@ -1,3 +1,5 @@
+let venue = null;
+
 (function () {
   let countryCodes = {};
 
@@ -54,12 +56,30 @@
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-          let registrationStatus = JSON.parse(request.response).status;
+          let res = null;
+          let registrationStatus = "";
+          if (request.response.includes("}NEWSTRING{")) {
+            res = request.response.split("NEWSTRING");
+            registrationStatus = JSON.parse(res[0]).status;
+            venue = JSON.parse(res[1]);
+          } else {
+            registrationStatus = JSON.parse(request.response).status;
+          };
           switch (registrationStatus) {
             case "found": {
-              alert("Manage away!");
               document.getElementById("manager-form").style.display = "none";
               document.getElementById("edit-fields").style.display = "initial";
+
+              if (venue && venue.isPublic) {
+                document.getElementById("change-isPublic").checked = true;
+              } else {
+                document.getElementById("change-isPublic").checked = false;
+              }
+              document.getElementById("change-name").value = venue.name;
+              document.getElementById("change-countryTag").value = venue.countryCode;
+              document.getElementById("change-country").value = countryInput.value;
+              document.getElementById("change-city").value = venue.city;
+              document.getElementById("change-street").value = venue.street;
               break;
             }
             case "denied": {
@@ -80,4 +100,43 @@
       alert("Please fill out all input fileds with valid information!");
     }
   });
+
+
+
+  let changeCodeInput = document.getElementById("change-countryTag");
+  let changeCountryInput = document.getElementById("change-country");
+
+  changeCodeInput.addEventListener("input", function () {
+    if (changeCodeInput.value.length == 2) {
+      for (let i = 0; i < countryCodes.length; i++) {
+        let pair = countryCodes[i];
+        if (pair.code === changeCodeInput.value.toUpperCase()) {
+          changeCountryInput.value = pair.name;
+          return;
+        }
+      }
+    } else {
+      changeCountryInput.value = null;
+    }
+  });
+
+  let navButtons = document.getElementsByClassName("navigation-button");
+  for (let i = 0; i < navButtons.length; i++) {
+    navButtons[i].addEventListener("click", function (e) {
+      e.preventDefault();
+      let buttons = document.getElementsByClassName("navigation-button");
+      for (let j = 0; j < buttons.length; j++) {
+        if (buttons[j] !== navButtons[i]) {
+          buttons[j].classList.remove("active");
+          document.getElementById(buttons[j].innerHTML.toLowerCase()).style.display = "none";
+        };
+      }
+      navButtons[i].classList.toggle("active");
+      if (navButtons[i].classList.contains("active")) {
+        document.getElementById(navButtons[i].innerHTML.toLowerCase()).style.display = "initial";
+      } else {
+        document.getElementById(navButtons[i].innerHTML.toLowerCase()).style.display = "none";
+      };
+    });
+  }
 })();
