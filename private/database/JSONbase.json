@@ -9,7 +9,7 @@
       "countryCode": "BA",
       "city": "Mostar",
       "street": "Kneza Branimira bb",
-      "isPublic": false,
+      "isPublic": true,
       "inventory": {
         "metadata": {
           "nextID": 0,
@@ -24,7 +24,7 @@
       "staff": [],
       "map": null,
       "dateAdded": "2019|3|18-8:38:30:641",
-      "lastUpdate": "2019|3|18-8:38:30:641",
+      "lastUpdate": "2019|3|19-16:27:17:22",
       "ID": 0
     },
     {

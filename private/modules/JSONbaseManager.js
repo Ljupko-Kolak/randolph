@@ -50,13 +50,22 @@ class JSONbaseManager {
     }
   };
   update(id, newValue) {
-    let oldValue = this.read(id);
-    oldValue = newValue;
+    // have to reuse the read() code
+    // because the change doesn't persist otherwise
+    // (assigning the return object of read()
+    // to a new variable is the issue)
+    for (let group in this.database) {
+      for (let entry in this.database[group]) {
+        if (this.database[group][entry].ID === id) {
+          this.database[group][entry] = newValue;
 
-    let date = new Date();
-    let now = date.getFullYear() + "|" + (date.getMonth() + 1) + "|" + date.getDate() + "-" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + ":" + date.getMilliseconds();
-
-    oldValue.lastUpdate = now;
+          let date = new Date();
+          let now = date.getFullYear() + "|" + (date.getMonth() + 1) + "|" + date.getDate() + "-" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + ":" + date.getMilliseconds();
+      
+          this.database[group][entry].lastUpdate = now;
+        };
+      }
+    };
   };
   delete(id) {
     for (let group in this.database) {

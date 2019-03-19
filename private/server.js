@@ -80,6 +80,11 @@ app.post("/venue-manager", function (req, res) {
     res.json({ status: "not found" });
   }
 });
+app.post("/update-venue", function (req, res) {
+  DBmanager.update(req.body.ID, req.body);
+  DBmanager.save(dbPath);
+  res.json({status: "success"});
+});
 
 var server = app.listen(3000, function () {
   console.log("Node server is running...");

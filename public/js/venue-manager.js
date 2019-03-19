@@ -36,6 +36,14 @@ let venue = null;
 
   let manageButton = document.getElementById("manageButton");
 
+
+  let changeIsPublic = document.getElementById("change-isPublic");
+  let changeName = document.getElementById("change-name");
+  let changeCountryTag = document.getElementById("change-countryTag");
+  let changeCountry = document.getElementById("change-country");
+  let changeCity = document.getElementById("change-city");
+  let changeStreet = document.getElementById("change-street");
+
   manageButton.addEventListener("click", function (e) {
     e.preventDefault();
 
@@ -101,22 +109,17 @@ let venue = null;
     }
   });
 
-
-
-  let changeCodeInput = document.getElementById("change-countryTag");
-  let changeCountryInput = document.getElementById("change-country");
-
-  changeCodeInput.addEventListener("input", function () {
-    if (changeCodeInput.value.length == 2) {
+  changeCountryTag.addEventListener("input", function () {
+    if (changeCountryTag.value.length == 2) {
       for (let i = 0; i < countryCodes.length; i++) {
         let pair = countryCodes[i];
-        if (pair.code === changeCodeInput.value.toUpperCase()) {
-          changeCountryInput.value = pair.name;
+        if (pair.code === changeCountryTag.value.toUpperCase()) {
+          changeCountry.value = pair.name;
           return;
         }
       }
     } else {
-      changeCountryInput.value = null;
+      changeCountry.value = null;
     }
   });
 
@@ -139,4 +142,39 @@ let venue = null;
       };
     });
   }
+
+  let saveButton = document.getElementById("save-button");
+  saveButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (
+      changeName.value !== "" &&
+      changeCountryTag.value.length == 2 && countryInput.value !== "" &&
+      changeCountry.value !== "" &&
+      changeStreet.value !== ""
+    ) {
+      venue.name = changeName.value;
+      venue.countryCode = changeCountryTag.value.toUpperCase();
+      venue.city = changeCity.value;
+      venue.street = changeStreet.value;
+      if (changeIsPublic.checked) {
+        venue.isPublic = true;
+      } else {
+        venue.isPublic = false;
+      };
+
+      let request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+          if (JSON.parse(request.response).status === "success") {
+            alert("Changes saved!");
+          }
+        };
+      };
+      request.open("POST", "../update-venue");
+      request.setRequestHeader("Content-type", "application/json");
+      request.send(JSON.stringify(venue));
+    } else {
+      alert("Please fill out all input fileds with valid information!");
+    };
+  });
 })();
