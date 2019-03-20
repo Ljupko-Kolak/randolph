@@ -20,13 +20,14 @@
       Country Code<br><input type="text" name="countryTag" id="countryTag" spellcheck="false" autocomplete="off"
         maxlength="2"><input type="text" name="country" id="country" readonly disabled><br>
       City<br><input type="text" name="city" id="city" spellcheck="false" autocomplete="off" maxlength="25"><br>
-      Street and Number<br><input type="text" name="street" id="street" spellcheck="false" autocomplete="off" maxlength="25"><br>
+      Street and Number<br><input type="text" name="street" id="street" spellcheck="false" autocomplete="off"
+        maxlength="25"><br>
       Administartor<br><input type="text" name="administrator" id="administrator" spellcheck="false" autocomplete="off"
         maxlength="25"><br>
       <input type="submit" value="Manage venue" class="button" id="manageButton">
     </form>
   </div>
-  <div id="edit-fields" style="display:none">
+  <div id="edit-fields" style="display:initial">
     <h3>Edit the fields below and click "Save changes" when you are done.</h3>
     <form action="/edit-venue" method="post" spellcheck="false" autocomplete="off">
       <div class="custom-checkbox-wrapper">
@@ -43,13 +44,26 @@
           <button class="navigation-button">Map</button>
           <button class="navigation-button">Administrators</button>
         </span>
-        <div id="inventory" style="display:none">inv</div>
-        <div id="staff" style="display:none">staff</div>
+        <div id="inventory" style="display:none">
+          <button id="inv-add" class="ISMA-button">Add</button>
+          <button id="inv-edit" class="ISMA-button">Edit</button>
+          <button id="inv-delete" class="ISMA-button delete">Delete</button>
+          <div id="inv-list"></div>
+        </div>
+        <div id="staff" style="display:none">
+          <button id="staff-add" class="ISMA-button">Add</button>
+          <button id="staff-delete" class="ISMA-button delete">Delete</button>
+          <div id="staff-list"></div>
+        </div>
         <div id="map" style="display:none">map</div>
-        <div id="administrators" style="display:none">admins</div>
+        <div id="administrators" style="display:none">
+          <button id="admins-add" class="ISMA-button">Add</button>
+          <button id="admins-delete" class="ISMA-button delete">Delete</button>
+          <div id="admins-list"></div>
+        </div>
       </div>
-      Name of Establishment<br><input type="text" name="venueName" id="change-name" spellcheck="false" autocomplete="off"
-        maxlength="25"><br>
+      Name of Establishment<br><input type="text" name="venueName" id="change-name" spellcheck="false"
+        autocomplete="off" maxlength="25"><br>
       Country Code<br><input type="text" name="countryTag" id="change-countryTag" spellcheck="false" autocomplete="off"
         maxlength="2"><input type="text" name="country" id="change-country" readonly disabled><br>
       City<br><input type="text" name="city" id="change-city" spellcheck="false" autocomplete="off" maxlength="25"><br>
@@ -57,6 +71,14 @@
         maxlength="25"><br>
       <input type="submit" value="Save changes" class="button" id="save-button">
     </form>
+  </div>
+  <div id="inventory-item-editor">
+    Item name:<br>
+    <input type="text" name="" id="item-name">
+    Price:<br>
+    <input type="number" id="item-price">
+    <button id="item-save">Save</button>
+    <button id="item-cancel">Cancel</button>
   </div>
 </body>
 <script src="./js/venue-manager.js"></script>

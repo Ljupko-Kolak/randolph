@@ -63,11 +63,11 @@ form .button {
   font-weight: bolder;
   line-height: 40px;
   border-radius: 25px;
+  cursor: pointer;
 }
 form .button:hover {
   color: deeppink;
   border-color: deeppink;
-  cursor: pointer;
 }
 form input[type=checkbox] {
   visibility: hidden;
@@ -153,6 +153,37 @@ form input[type=number]::-webkit-outer-spin-button {
 }
 #ISMA-field {
   margin: 10px 0 75px 0;
-  border: 2px solid yellowgreen;
+  border-bottom: 2px solid yellowgreen;
+}
+.ISMA-button {
+  color:  greenyellow;
+  background-color: indigo;
+  margin: 5px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: bolder;
+  line-height: 20px;
+  border: 2px solid greenyellow;
   border-radius: 10px;
+  cursor: pointer;
+}
+.ISMA-button:hover {
+  color: deeppink;
+  border-color: deeppink;
+}
+.delete:hover {
+  color: orangered;
+  border-color: orangered;
+}
+#inventory-item-editor {
+  display: none;
+  background-color: indigo;
+  border: 2px solid greenyellow;
+  padding: 5px;
+  border-radius: 10px;
+  position: fixed;
+  width: 70%;
+  left: 15%;
+  top: 40%;
+  z-index: 1;
 }

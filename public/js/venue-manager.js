@@ -177,4 +177,36 @@ let venue = null;
       alert("Please fill out all input fileds with valid information!");
     };
   });
+
+  let editor = document.getElementById("inventory-item-editor");
+  let invAdd = document.getElementById("inv-add");
+  invAdd.addEventListener("click", function (e) {
+    e.preventDefault();
+    editor.style.display = "initial";
+  });
+  let invList = document.getElementById("inv-list");
+
+  let itemSave = document.getElementById("item-save");
+  itemSave.addEventListener("click", function (e) {
+    e.preventDefault();
+    let itemName = document.getElementById("item-name");
+    let itemPrice = document.getElementById("item-price");
+    if (itemName.value !== "" && itemPrice.value !== "") {
+      let newItem = {
+        name: itemName.value,
+        price: itemPrice.value
+      };
+      invList.innerHTML += newItem.name + ": " + newItem.price + "<br>";
+      itemName.value = "";
+      itemPrice.value = "";
+      editor.style.display = "none";
+    } else {
+      alert("Please fill out all input fileds with valid information!");
+    }
+  });
+  let itemCancel = document.getElementById("item-cancel");
+  itemCancel.addEventListener("click", function (e) {
+    e.preventDefault();
+    editor.style.display = "none";
+  });
 })();
