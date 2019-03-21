@@ -33,7 +33,7 @@
       <div class="custom-checkbox-wrapper">
         Venue is shown in search results:
         <div class="custom-checkbox">
-          <input type="checkbox" name="isPublic" id="change-isPublic">
+          <input type="checkbox" name="isPublic" class="hidden-checkbox" id="change-isPublic">
           <label for="change-isPublic"></label>
         </div>
       </div>
@@ -48,7 +48,13 @@
           <button id="inv-add" class="ISMA-button">Add</button>
           <button id="inv-edit" class="ISMA-button">Edit</button>
           <button id="inv-delete" class="ISMA-button delete">Delete</button>
-          <div id="inv-list"></div>
+          <table id="inv-list">
+            <tr class="table-header">
+              <th>Product name</th>
+              <th>Amount</th>
+              <th>Price</th>
+            </tr>
+          </table>
         </div>
         <div id="staff" style="display:none">
           <button id="staff-add" class="ISMA-button">Add</button>
@@ -73,13 +79,27 @@
     </form>
   </div>
   <div id="inventory-item-editor">
-    Item name:<br>
-    <input type="text" name="" id="item-name">
-    Price:<br>
-    <input type="number" id="item-price">
-    <button id="item-save">Save</button>
-    <button id="item-cancel">Cancel</button>
-  </div>
+    <form action="">
+      Item name:<br>
+      <input type="text" name="" id="item-name">
+      Amount:<br>
+      <input type="number" id="item-amount">
+      Units:
+      <select name="" id="units-selector">
+        <option value="imperial">Imperial</option>
+        <option value="metric">Metric</option>
+      </select><br>
+      Type:
+      <select name="" id="type-selector">
+        <option value="drink">Drink</option>
+        <option value="food">Food</option>
+      </select><br>
+      This is a mass item:
+      <input type="checkbox" name="" class="regular-checkbox" id="is-mass-item"><br>
+      Price:<br>
+      <input type="number" id="item-price">
+      <input type="submit" value="Save" id="item-save"><input type="button" value="Cancel" id="item-cancel">
+    </form>
 </body>
 <script src="./js/venue-manager.js"></script>
 

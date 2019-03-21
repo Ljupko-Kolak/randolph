@@ -191,13 +191,17 @@ let venue = null;
     e.preventDefault();
     let itemName = document.getElementById("item-name");
     let itemPrice = document.getElementById("item-price");
-    if (itemName.value !== "" && itemPrice.value !== "") {
+    let itemAmount = document.getElementById("item-amount");
+    if (itemName.value !== "" && itemPrice.value !== "" && itemAmount.value !== "") {
       let newItem = {
         name: itemName.value,
+        amount: itemAmount.value,
         price: itemPrice.value
       };
-      invList.innerHTML += newItem.name + ": " + newItem.price + "<br>";
+      let itemHTML = `<tr class="menu-item"><td>${newItem.name}</td><td>${newItem.amount}</td><td>${newItem.price}</td></tr>`;
+      invList.innerHTML += itemHTML;
       itemName.value = "";
+      itemAmount.value = "";
       itemPrice.value = "";
       editor.style.display = "none";
     } else {
