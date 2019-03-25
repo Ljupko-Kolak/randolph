@@ -6,7 +6,7 @@ class Inventory {
       nextID: 0,
       totalItems: 0
     };
-    this.items = null;
+    this.items = [];
   }
 
   addItem(item, category) {

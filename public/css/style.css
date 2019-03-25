@@ -149,7 +149,8 @@ form input[type=number]::-webkit-outer-spin-button {
   border-bottom-color: greenyellow;
 }
 .navigation-bar button.active {
-  border: none;
+  color: greenyellow;
+  border-bottom: none;
 }
 #ISMA-field {
   margin: 10px 0 75px 0;
@@ -207,9 +208,14 @@ form input[type=number]::-webkit-outer-spin-button {
 }
 table {
   width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
 table, th, td {
   border: 1px solid cadetblue;
+}
+th {
+  border-bottom-width: 2px;
 }
 th, td {
   padding: 15px;
