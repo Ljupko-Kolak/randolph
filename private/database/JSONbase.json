@@ -28,17 +28,39 @@
       "ID": 0
     },
     {
-      "name": "Crni Mačak",
+      "name": "Kod Crnog Mačka",
       "countryCode": "BA",
       "city": "Vitez",
-      "street": "Neka Ulica bb",
+      "street": "PC 96 / Zona II",
       "isPublic": true,
       "inventory": {
         "metadata": {
           "nextID": 0,
           "totalItems": 0
         },
-        "items": []
+        "items": [
+          {
+            "name": "Cedevita",
+            "price": 1,
+            "amount": 0.25,
+            "isFood": false,
+            "isMassItem": false
+          },
+          {
+            "name": "Ožujsko",
+            "price": 2.5,
+            "amount": 0.3,
+            "isFood": false,
+            "isMassItem": false
+          },
+          {
+            "name": "Staropramen",
+            "amount": "0.3",
+            "price": "2.50",
+            "isFood": false,
+            "isMassItem": false
+          }
+        ]
       },
       "orders": [],
       "administrators": [
@@ -47,7 +69,7 @@
       "staff": [],
       "map": null,
       "dateAdded": "2019|3|19-7:52:32:797",
-      "lastUpdate": "2019|3|19-7:52:32:797",
+      "lastUpdate": "2019|3|26-17:34:48:68",
       "ID": 1
     }
   ]

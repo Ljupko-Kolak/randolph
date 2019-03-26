@@ -27,7 +27,7 @@
       <input type="submit" value="Manage venue" class="button" id="manageButton">
     </form>
   </div>
-  <div id="edit-fields" style="display:initial">
+  <div id="edit-fields" style="display:none">
     <h3>Edit the fields below and click "Save changes" when you are done.</h3>
     <form action="/edit-venue" method="post" spellcheck="false" autocomplete="off">
       <div class="custom-checkbox-wrapper">
@@ -91,10 +91,9 @@
         <option value="imperial">Imperial</option>
         <option value="metric">Metric</option>
       </select><br>
-      Type:
+      This is food:
       <select name="" id="type-selector">
-        <option value="drink">Drink</option>
-        <option value="food">Food</option>
+        <input type="checkbox" name="" class="regular-checkbox" id="is-food"><br>
       </select><br>
       This is a mass item:
       <input type="checkbox" name="" class="regular-checkbox" id="is-mass-item"><br>

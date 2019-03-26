@@ -1,5 +1,37 @@
 let venue = null;
 
+function loadVenue(responseData) {
+  venue = JSON.parse(responseData);
+
+  document.getElementById("manager-form").style.display = "none";
+  document.getElementById("edit-fields").style.display = "initial";
+
+  if (venue && venue.isPublic) {
+    document.getElementById("change-isPublic").checked = true;
+  } else {
+    document.getElementById("change-isPublic").checked = false;
+  }
+  document.getElementById("change-name").value = venue.name;
+  document.getElementById("change-countryTag").value = venue.countryCode;
+  document.getElementById("change-country").value = document.getElementById("country").value;
+  document.getElementById("change-city").value = venue.city;
+  document.getElementById("change-street").value = venue.street;
+
+  let invList = document.getElementById("inv-list");
+  for (let i = 0; i < venue.inventory.items.length; i++) {
+    let item = venue.inventory.items[i];
+    invList.innerHTML += `<tr class="menu-item"><td>${item.name}</td><td>${item.amount}</td><td>${item.price}</td></tr>`;
+  };
+  let staffList = document.getElementById("staff-list");
+  for (let i = 0; i < venue.staff.length; i++) {
+    staffList.innerHTML += venue.staff[i];
+  }
+  let adminsList = document.getElementById("admins-list");
+  for (let i = 0; i < venue.administrators.length; i++) {
+    adminsList.innerHTML += venue.administrators[i];
+  }
+}
+
 (function () {
   let countryCodes = {};
 
@@ -66,28 +98,17 @@ let venue = null;
         if (this.readyState === 4 && this.status === 200) {
           let res = null;
           let registrationStatus = "";
+          let venueData = "";
           if (request.response.includes("}NEWSTRING{")) {
             res = request.response.split("NEWSTRING");
             registrationStatus = JSON.parse(res[0]).status;
-            venue = JSON.parse(res[1]);
+            venueData = res[1];
           } else {
             registrationStatus = JSON.parse(request.response).status;
           };
           switch (registrationStatus) {
             case "found": {
-              document.getElementById("manager-form").style.display = "none";
-              document.getElementById("edit-fields").style.display = "initial";
-
-              if (venue && venue.isPublic) {
-                document.getElementById("change-isPublic").checked = true;
-              } else {
-                document.getElementById("change-isPublic").checked = false;
-              }
-              document.getElementById("change-name").value = venue.name;
-              document.getElementById("change-countryTag").value = venue.countryCode;
-              document.getElementById("change-country").value = countryInput.value;
-              document.getElementById("change-city").value = venue.city;
-              document.getElementById("change-street").value = venue.street;
+              loadVenue(venueData);
               break;
             }
             case "denied": {
@@ -192,13 +213,18 @@ let venue = null;
     let itemName = document.getElementById("item-name");
     let itemPrice = document.getElementById("item-price");
     let itemAmount = document.getElementById("item-amount");
+    let itemIsFood = document.getElementById("is-food");
+    let itemIsMassItem = document.getElementById("is-mass-item");
     if (itemName.value !== "" && itemPrice.value !== "" && itemAmount.value !== "") {
       let newItem = {
         name: itemName.value,
         amount: itemAmount.value,
-        price: itemPrice.value
+        price: itemPrice.value,
+        isFood: false,
+        isMassItem: false
       };
       let itemHTML = `<tr class="menu-item"><td>${newItem.name}</td><td>${newItem.amount}</td><td>${newItem.price}</td></tr>`;
+      venue.inventory.items.push(newItem);
       invList.innerHTML += itemHTML;
       itemName.value = "";
       itemAmount.value = "";

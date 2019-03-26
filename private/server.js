@@ -69,7 +69,7 @@ app.post("/venue-manager", function (req, res) {
   if (v) {
     if (v.administrators.includes(req.body.administrator)) {
       //res.json({ status: "found" });
-      res.write(JSON.stringify({status: "found"}));
+      res.write(JSON.stringify({ status: "found" }));
       res.write("NEWSTRING");
       res.write(JSON.stringify(v));
       res.end();
@@ -83,7 +83,7 @@ app.post("/venue-manager", function (req, res) {
 app.post("/update-venue", function (req, res) {
   DBmanager.update(req.body.ID, req.body);
   DBmanager.save(dbPath);
-  res.json({status: "success"});
+  res.json({ status: "success" });
 });
 
 var server = app.listen(3000, function () {
