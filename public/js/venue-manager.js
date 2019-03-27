@@ -219,9 +219,17 @@ function loadVenue(responseData) {
       let newItem = {
         name: itemName.value,
         amount: itemAmount.value,
-        price: itemPrice.value,
-        isFood: false,
-        isMassItem: false
+        price: itemPrice.value
+      };
+      if (itemIsFood.checked) {
+        newItem.isFood = true;
+      } else {
+        newItem.isFood = false;
+      };
+      if (itemIsMassItem.checked) {
+        newItem.isMassItem = true;
+      } else {
+        newItem.isMassItem = false;
       };
       let itemHTML = `<tr class="menu-item"><td>${newItem.name}</td><td>${newItem.amount}</td><td>${newItem.price}</td></tr>`;
       venue.inventory.items.push(newItem);
@@ -229,6 +237,8 @@ function loadVenue(responseData) {
       itemName.value = "";
       itemAmount.value = "";
       itemPrice.value = "";
+      itemIsFood.checked = false;
+      itemIsMassItem.checked = false;
       editor.style.display = "none";
     } else {
       alert("Please fill out all input fileds with valid information!");

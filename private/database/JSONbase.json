@@ -15,7 +15,29 @@
           "nextID": 0,
           "totalItems": 0
         },
-        "items": []
+        "items": [
+          {
+            "name": "Cedevita",
+            "amount": "0.25",
+            "price": "2.50",
+            "isFood": false,
+            "isMassItem": false
+          },
+          {
+            "name": "Staropramen, točeni",
+            "amount": "0.3",
+            "price": "2.50",
+            "isFood": false,
+            "isMassItem": true
+          },
+          {
+            "name": "Pizza margarita",
+            "amount": "500",
+            "price": "12.00",
+            "isFood": true,
+            "isMassItem": false
+          }
+        ]
       },
       "orders": [],
       "administrators": [
@@ -24,7 +46,7 @@
       "staff": [],
       "map": null,
       "dateAdded": "2019|3|18-8:38:30:641",
-      "lastUpdate": "2019|3|19-16:27:17:22",
+      "lastUpdate": "2019|3|27-12:22:49:251",
       "ID": 0
     },
     {
@@ -59,6 +81,20 @@
             "price": "2.50",
             "isFood": false,
             "isMassItem": false
+          },
+          {
+            "name": "Staropramen, točeni",
+            "amount": "0.3",
+            "price": "2.50",
+            "isFood": false,
+            "isMassItem": true
+          },
+          {
+            "name": "Pizza Margarita",
+            "amount": "500",
+            "price": "7",
+            "isFood": true,
+            "isMassItem": false
           }
         ]
       },
@@ -69,7 +105,7 @@
       "staff": [],
       "map": null,
       "dateAdded": "2019|3|19-7:52:32:797",
-      "lastUpdate": "2019|3|26-17:34:48:68",
+      "lastUpdate": "2019|3|27-12:29:19:64",
       "ID": 1
     }
   ]
