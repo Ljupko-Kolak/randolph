@@ -18,23 +18,30 @@
         "items": [
           {
             "name": "Cedevita",
-            "amount": "0.25",
-            "price": "2.50",
+            "amount": 0.25,
+            "price": 2.5,
             "isFood": false,
             "isMassItem": false
           },
           {
             "name": "Staropramen, točeni",
-            "amount": "0.3",
-            "price": "2.50",
+            "amount": 0.3,
+            "price": 2.5,
             "isFood": false,
             "isMassItem": true
           },
           {
             "name": "Pizza margarita",
-            "amount": "500",
-            "price": "12.00",
+            "amount": 500,
+            "price": 12,
             "isFood": true,
+            "isMassItem": false
+          },
+          {
+            "name": "Cedevita",
+            "amount": 0.5,
+            "price": 2,
+            "isFood": false,
             "isMassItem": false
           }
         ]
@@ -46,7 +53,7 @@
       "staff": [],
       "map": null,
       "dateAdded": "2019|3|18-8:38:30:641",
-      "lastUpdate": "2019|3|27-12:22:49:251",
+      "lastUpdate": "2019|3|29-15:11:2:622",
       "ID": 0
     },
     {
@@ -77,22 +84,22 @@
           },
           {
             "name": "Staropramen",
-            "amount": "0.3",
-            "price": "2.50",
+            "amount": 0.3,
+            "price": 2.5,
             "isFood": false,
             "isMassItem": false
           },
           {
             "name": "Staropramen, točeni",
-            "amount": "0.3",
-            "price": "2.50",
+            "amount": 0.3,
+            "price": 2.5,
             "isFood": false,
             "isMassItem": true
           },
           {
             "name": "Pizza Margarita",
-            "amount": "500",
-            "price": "7",
+            "amount": 500,
+            "price": 7,
             "isFood": true,
             "isMassItem": false
           }

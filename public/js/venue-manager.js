@@ -218,8 +218,8 @@ function loadVenue(responseData) {
     if (itemName.value !== "" && itemPrice.value !== "" && itemAmount.value !== "") {
       let newItem = {
         name: itemName.value,
-        amount: itemAmount.value,
-        price: itemPrice.value
+        amount: parseFloat(itemAmount.value),
+        price: parseFloat(itemPrice.value)
       };
       if (itemIsFood.checked) {
         newItem.isFood = true;
@@ -248,5 +248,44 @@ function loadVenue(responseData) {
   itemCancel.addEventListener("click", function (e) {
     e.preventDefault();
     editor.style.display = "none";
+  });
+
+  let inventoryList = document.getElementById("inv-list");
+  inventoryList.addEventListener("click", function (e) {
+    if (e.target && e.target.nodeName === "TD") {
+      let text = e.target.parentNode.innerHTML.split("<td>").join("");
+      text = text.split("</td>").join("|");
+
+      let itemName = text.split("|")[0];
+      let itemAmount = parseFloat(text.split("|")[1]);
+      let itemPrice = parseFloat(text.split("|")[2]);
+
+      for (let i = 0; i < venue.inventory.items.length; i++) {
+        let item = venue.inventory.items[i];
+
+        if (
+          item.name === itemName &&
+          item.amount === itemAmount &&
+          item.price === itemPrice
+        ) {
+          document.getElementById("item-name").value = item.name;
+          document.getElementById("item-price").value = item.price;
+          document.getElementById("item-amount").value = item.amount;
+          if (item.isFood) {
+            document.getElementById("is-food").checked = true;
+          } else {
+            document.getElementById("is-food").checked = false;
+          };
+          if (item.isMassItem) {
+            document.getElementById("is-mass-item").checked = true;
+          } else {
+            document.getElementById("is-mass-item").checked = false;
+          };
+
+          editor.style.display = "initial";
+          break;
+        };
+      }
+    }
   });
 })();
