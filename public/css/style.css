@@ -88,7 +88,7 @@ form input[type=checkbox].hidden-checkbox {
   margin: 10px auto;
 }
 .custom-checkbox::before {
-  content: "On";
+  content: "Yes";
   position: absolute;
   top: 6px;
   left: 13px;
@@ -97,7 +97,7 @@ form input[type=checkbox].hidden-checkbox {
   font-size: 16px;
 }
 .custom-checkbox::after {
-  content: "Off";
+  content: "No";
   position: absolute;
   top: 6px;
   left: 74px;
@@ -149,6 +149,7 @@ form input[type=number]::-webkit-outer-spin-button {
   border-bottom-color: greenyellow;
 }
 .navigation-bar button.active {
+  font-weight: bold;
   color: greenyellow;
   border-bottom: none;
 }
@@ -198,6 +199,12 @@ form input[type=number]::-webkit-outer-spin-button {
   margin: 1%;
   cursor: pointer;
 }
+#inventory-item-editor form input[id="item-delete"] {
+  width: 98%;
+  margin: 1%;
+  font-weight: bold;
+  cursor: pointer;
+}
 #inventory-item-editor form input[type="submit"]:hover {
   color: greenyellow;
   border-color: greenyellow;
@@ -215,12 +222,14 @@ table, th, td {
   border: 1px solid cadetblue;
 }
 th {
+  color: greenyellow;
   border-bottom-width: 2px;
 }
 th, td {
   padding: 15px;
 }
 tr:hover {
+  color: black;
   background-color: greenyellow;
   cursor: pointer;
 }
@@ -228,5 +237,15 @@ tr:hover {
   background-color: #333334;
 }
 .table-header th:hover {
-  background-color: indigo;
+  color: black;
+  background-color: greenyellow;
+}
+#inv-add {
+  text-align: center;
+  color: greenyellow;
+  font-weight: bold;
+}
+#inv-add:hover {
+  color: black;
+  background-color: greenyellow;
 }

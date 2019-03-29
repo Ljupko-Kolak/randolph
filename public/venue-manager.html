@@ -18,8 +18,10 @@
       Name of Establishment<br><input type="text" name="venueName" id="name" spellcheck="false" autocomplete="off"
         maxlength="25" value="Golden Pub"><br>
       Country Code<br><input type="text" name="countryTag" id="countryTag" spellcheck="false" autocomplete="off"
-        maxlength="2" value="BA"><input type="text" name="country" id="country" readonly disabled value="Bosnia and Herzegovina"><br>
-      City<br><input type="text" name="city" id="city" spellcheck="false" autocomplete="off" maxlength="25" value="Mostar"><br>
+        maxlength="2" value="BA"><input type="text" name="country" id="country" readonly disabled
+        value="Bosnia and Herzegovina"><br>
+      City<br><input type="text" name="city" id="city" spellcheck="false" autocomplete="off" maxlength="25"
+        value="Mostar"><br>
       Street and Number<br><input type="text" name="street" id="street" spellcheck="false" autocomplete="off"
         maxlength="25" value="Kneza Branimira bb"><br>
       Administartor<br><input type="text" name="administrator" id="administrator" spellcheck="false" autocomplete="off"
@@ -45,26 +47,24 @@
           <button class="navigation-button">Administrators</button>
         </span>
         <div id="inventory" style="display:none">
-          <button id="inv-add" class="ISMA-button">Add</button>
-          <button id="inv-edit" class="ISMA-button">Edit</button>
-          <button id="inv-delete" class="ISMA-button delete">Delete</button>
+          Click <b>+</b> to add a new item.<br>
+          Click an existing item to edit or delete it.
           <table id="inv-list">
             <tr class="table-header">
               <th>Product name</th>
               <th>Amount</th>
               <th>Price</th>
             </tr>
+            <tr>
+              <td id="inv-add" colspan="3">+</td>
+            </tr>
           </table>
         </div>
         <div id="staff" style="display:none">
-          <button id="staff-add" class="ISMA-button">Add</button>
-          <button id="staff-delete" class="ISMA-button delete">Delete</button>
-          <div id="staff-list"></div>
+          <div id="staff-list">none yet</div>
         </div>
         <div id="map" style="display:none">Work in Progress (not yet, actually... later)</div>
         <div id="administrators" style="display:none">
-          <button id="admins-add" class="ISMA-button">Add</button>
-          <button id="admins-delete" class="ISMA-button delete">Delete</button>
           <div id="admins-list"></div>
         </div>
       </div>
@@ -86,18 +86,21 @@
       <input type="number" id="item-amount">
       Price:<br>
       <input type="number" id="item-price">
-      Units:
-      <select name="" id="units-selector">
-        <option value="imperial">Imperial</option>
-        <option value="metric">Metric</option>
-      </select><br>
-      This is food:
-      <select name="" id="type-selector">
-        <input type="checkbox" name="" class="regular-checkbox" id="is-food"><br>
-      </select><br>
-      This is a mass item:
-      <input type="checkbox" name="" class="regular-checkbox" id="is-mass-item"><br>
-      <input type="submit" value="Save" id="item-save"><input type="button" value="Cancel" id="item-cancel">
+      <div class="custom-checkbox-wrapper">
+        This menu item is food:
+        <div class="custom-checkbox">
+          <input type="checkbox" name="isFood" class="hidden-checkbox" id="is-food">
+          <label for="is-food"></label>
+        </div>
+      </div>
+      <div class="custom-checkbox-wrapper">
+        This is a mass item:
+        <div class="custom-checkbox">
+          <input type="checkbox" name="isMassItem" class="hidden-checkbox" id="is-mass-item">
+          <label for="is-mass-item"></label>
+        </div>
+      </div>
+      <input type="submit" value="Save" id="item-save"><input type="button" value="Cancel" id="item-cancel"><input type="button" value="Delete!" id="item-delete" hidden>
     </form>
 </body>
 <script src="./js/venue-manager.js"></script>

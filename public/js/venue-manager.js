@@ -17,11 +17,8 @@ function loadVenue(responseData) {
   document.getElementById("change-city").value = venue.city;
   document.getElementById("change-street").value = venue.street;
 
-  let invList = document.getElementById("inv-list");
-  for (let i = 0; i < venue.inventory.items.length; i++) {
-    let item = venue.inventory.items[i];
-    invList.innerHTML += `<tr class="menu-item"><td>${item.name}</td><td>${item.amount}</td><td>${item.price}</td></tr>`;
-  };
+  loadInventory();
+
   let staffList = document.getElementById("staff-list");
   for (let i = 0; i < venue.staff.length; i++) {
     staffList.innerHTML += venue.staff[i];
@@ -30,6 +27,21 @@ function loadVenue(responseData) {
   for (let i = 0; i < venue.administrators.length; i++) {
     adminsList.innerHTML += venue.administrators[i];
   }
+}
+function loadInventory() {
+  let invList = document.getElementById("inv-list");
+  invList.innerHTML = `<tr class="table-header">
+  <th>Product name</th>
+  <th>Amount</th>
+  <th>Price</th>
+</tr>
+<tr>
+  <td id="inv-add" colspan="3">+</td>
+</tr>`;
+  for (let i = 0; i < venue.inventory.items.length; i++) {
+    let item = venue.inventory.items[i];
+    invList.innerHTML += `<tr class="menu-item"><td>${item.name}</td><td>${item.amount}</td><td>${item.price}</td></tr>`;
+  };
 }
 
 (function () {
@@ -200,11 +212,6 @@ function loadVenue(responseData) {
   });
 
   let editor = document.getElementById("inventory-item-editor");
-  let invAdd = document.getElementById("inv-add");
-  invAdd.addEventListener("click", function (e) {
-    e.preventDefault();
-    editor.style.display = "initial";
-  });
   let invList = document.getElementById("inv-list");
 
   let itemSave = document.getElementById("item-save");
@@ -247,12 +254,47 @@ function loadVenue(responseData) {
   let itemCancel = document.getElementById("item-cancel");
   itemCancel.addEventListener("click", function (e) {
     e.preventDefault();
+    document.getElementById("item-name").value = "";
+    document.getElementById("item-price").value = "";
+    document.getElementById("item-amount").value = "";
+    document.getElementById("is-food").checked = false;
+    document.getElementById("is-mass-item").checked = false;
+
     editor.style.display = "none";
+  });
+
+  let itemDelete = document.getElementById("item-delete");
+  itemDelete.addEventListener("click", function (e) {
+    e.preventDefault();
+    for (let i = 0; i < venue.inventory.items.length; i++) {
+      let item = venue.inventory.items[i];
+
+      if (
+        item.name === document.getElementById("item-name").value &&
+        item.amount === parseFloat(document.getElementById("item-amount").value) &&
+        item.price === parseFloat(document.getElementById("item-price").value)
+      ) {
+        venue.inventory.items.splice(venue.inventory.items.indexOf(item), 1);
+
+        document.getElementById("item-name").value = "";
+        document.getElementById("item-price").value = "";
+        document.getElementById("item-amount").value = "";
+        document.getElementById("is-food").checked = false;
+        document.getElementById("is-mass-item").checked = false;
+
+        editor.style.display = "none";
+        break;
+      };
+    }
+    loadInventory();
   });
 
   let inventoryList = document.getElementById("inv-list");
   inventoryList.addEventListener("click", function (e) {
-    if (e.target && e.target.nodeName === "TD") {
+    if (e.target && e.target.id === "inv-add") {
+      editor.style.display = "initial";
+      itemDelete.hidden = true;
+    } else if (e.target && e.target.nodeName === "TD") {
       let text = e.target.parentNode.innerHTML.split("<td>").join("");
       text = text.split("</td>").join("|");
 
@@ -283,6 +325,7 @@ function loadVenue(responseData) {
           };
 
           editor.style.display = "initial";
+          itemDelete.hidden = false;
           break;
         };
       }
