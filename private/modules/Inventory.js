@@ -2,10 +2,7 @@ const MenuItem = require("./MenuItem.js");
 
 class Inventory {
   constructor() {
-    this.metadata = {
-      nextID: 0,
-      totalItems: 0
-    };
+    this.nextID = 0;
     this.items = [];
   }
 

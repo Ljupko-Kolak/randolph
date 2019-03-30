@@ -31,17 +31,27 @@ function loadVenue(responseData) {
 function loadInventory() {
   let invList = document.getElementById("inv-list");
   invList.innerHTML = `<tr class="table-header">
+  <th>ID</th>
   <th>Product name</th>
   <th>Amount</th>
   <th>Price</th>
 </tr>
 <tr>
-  <td id="inv-add" colspan="3">+</td>
+  <td id="inv-add" colspan="4">+</td>
 </tr>`;
   for (let i = 0; i < venue.inventory.items.length; i++) {
     let item = venue.inventory.items[i];
-    invList.innerHTML += `<tr class="menu-item"><td>${item.name}</td><td>${item.amount}</td><td>${item.price}</td></tr>`;
+    invList.innerHTML += `<tr class="menu-item"><td>${item.id}</td><td>${item.name}</td><td>${item.amount}</td><td>${item.price}</td></tr>`;
   };
+}
+function clearItemEditor() {
+  document.getElementById("item-id").value = "";
+  document.getElementById("item-name").value = "";
+  document.getElementById("item-price").value = "";
+  document.getElementById("item-amount").value = "";
+  document.getElementById("item-left-in-stock").value = "";
+  document.getElementById("is-food").checked = false;
+  document.getElementById("is-mass-item").checked = false;
 }
 
 (function () {
@@ -217,17 +227,32 @@ function loadInventory() {
   let itemSave = document.getElementById("item-save");
   itemSave.addEventListener("click", function (e) {
     e.preventDefault();
+    let itemID = document.getElementById("item-id");
     let itemName = document.getElementById("item-name");
     let itemPrice = document.getElementById("item-price");
     let itemAmount = document.getElementById("item-amount");
+    let itemLeftInStock = document.getElementById("item-left-in-stock");
     let itemIsFood = document.getElementById("is-food");
     let itemIsMassItem = document.getElementById("is-mass-item");
-    if (itemName.value !== "" && itemPrice.value !== "" && itemAmount.value !== "") {
+    if (
+      itemName.value !== "" &&
+      itemPrice.value !== "" &&
+      itemAmount.value !== "" &&
+      itemLeftInStock.value !== ""
+    ) {
       let newItem = {
         name: itemName.value,
         amount: parseFloat(itemAmount.value),
-        price: parseFloat(itemPrice.value)
+        price: parseFloat(itemPrice.value),
+        leftInStock: parseFloat(itemLeftInStock.value)
       };
+      if (itemID.value === "") {
+        newItem.id = venue.inventory.nextID;
+        venue.inventory.nextID++;
+        itemID.value = newItem.id;
+      } else {
+        newItem.id = parseInt(itemID.value);
+      }
       if (itemIsFood.checked) {
         newItem.isFood = true;
       } else {
@@ -238,15 +263,24 @@ function loadInventory() {
       } else {
         newItem.isMassItem = false;
       };
-      let itemHTML = `<tr class="menu-item"><td>${newItem.name}</td><td>${newItem.amount}</td><td>${newItem.price}</td></tr>`;
-      venue.inventory.items.push(newItem);
-      invList.innerHTML += itemHTML;
-      itemName.value = "";
-      itemAmount.value = "";
-      itemPrice.value = "";
-      itemIsFood.checked = false;
-      itemIsMassItem.checked = false;
+
+      let itemFound = false;
+      let itemIndex = null;
+      for (let i = 0; i < venue.inventory.items.length; i++) {
+        if (venue.inventory.items[i].id === newItem.id) {
+          itemFound = true;
+          itemIndex = i;
+          break;
+        }
+      }
+      if (itemFound) {
+        venue.inventory.items[itemIndex] = newItem;
+      } else {
+        venue.inventory.items.push(newItem);
+      }
+      clearItemEditor();
       editor.style.display = "none";
+      loadInventory();
     } else {
       alert("Please fill out all input fileds with valid information!");
     }
@@ -254,11 +288,7 @@ function loadInventory() {
   let itemCancel = document.getElementById("item-cancel");
   itemCancel.addEventListener("click", function (e) {
     e.preventDefault();
-    document.getElementById("item-name").value = "";
-    document.getElementById("item-price").value = "";
-    document.getElementById("item-amount").value = "";
-    document.getElementById("is-food").checked = false;
-    document.getElementById("is-mass-item").checked = false;
+    clearItemEditor();
 
     editor.style.display = "none";
   });
@@ -266,21 +296,14 @@ function loadInventory() {
   let itemDelete = document.getElementById("item-delete");
   itemDelete.addEventListener("click", function (e) {
     e.preventDefault();
+    let listID = parseInt(document.getElementById("item-id").value);
     for (let i = 0; i < venue.inventory.items.length; i++) {
       let item = venue.inventory.items[i];
 
-      if (
-        item.name === document.getElementById("item-name").value &&
-        item.amount === parseFloat(document.getElementById("item-amount").value) &&
-        item.price === parseFloat(document.getElementById("item-price").value)
-      ) {
+      if (item.id === listID) {
         venue.inventory.items.splice(venue.inventory.items.indexOf(item), 1);
 
-        document.getElementById("item-name").value = "";
-        document.getElementById("item-price").value = "";
-        document.getElementById("item-amount").value = "";
-        document.getElementById("is-food").checked = false;
-        document.getElementById("is-mass-item").checked = false;
+        clearItemEditor();
 
         editor.style.display = "none";
         break;
@@ -298,21 +321,19 @@ function loadInventory() {
       let text = e.target.parentNode.innerHTML.split("<td>").join("");
       text = text.split("</td>").join("|");
 
-      let itemName = text.split("|")[0];
-      let itemAmount = parseFloat(text.split("|")[1]);
-      let itemPrice = parseFloat(text.split("|")[2]);
+      let itemID = parseInt(text.split("|")[0]);
 
       for (let i = 0; i < venue.inventory.items.length; i++) {
         let item = venue.inventory.items[i];
 
         if (
-          item.name === itemName &&
-          item.amount === itemAmount &&
-          item.price === itemPrice
+          item.id === itemID
         ) {
+          document.getElementById("item-id").value = item.id;
           document.getElementById("item-name").value = item.name;
           document.getElementById("item-price").value = item.price;
           document.getElementById("item-amount").value = item.amount;
+          document.getElementById("item-left-in-stock").value = item.leftInStock;
           if (item.isFood) {
             document.getElementById("is-food").checked = true;
           } else {

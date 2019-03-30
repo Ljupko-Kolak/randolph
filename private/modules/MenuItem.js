@@ -1,8 +1,9 @@
 class MenuItem {
-  constructor(name, price, amount, isFood = false, isMassItem = false) {
+  constructor(name, price, amount, leftInStock = 0, isFood = false, isMassItem = false) {
     this.name = name;
     this.price = price;
     this.amount = amount;
+    this.leftInStock = leftInStock;
     this.isFood = isFood;
     // if the amount ordered is not in pieces, but in liters/grams
     // usually used for drought beer and hard drinks

@@ -7,10 +7,7 @@ class JSONbaseManager {
 
   makeNewBase() {
     this.database = {
-      metadata: {
-        nextID: 0,
-        totalItems: 0,
-      },
+      nextID: 0,
       venues: []
     };
   };
@@ -34,11 +31,10 @@ class JSONbaseManager {
 
     newEntry.dateAdded = now;
     newEntry.lastUpdate = now;
-    newEntry.ID = this.database.metadata.nextID;
+    newEntry.ID = this.database.nextID;
     this.database[group].push(newEntry);
 
-    this.database.metadata.nextID++;
-    this.database.metadata.totalItems++;
+    this.database.nextID++;
   };
   read(id) {
     for (let group in this.database) {
@@ -72,7 +68,6 @@ class JSONbaseManager {
       for (let entry in this.database[group]) {
         if (this.database[group][entry].ID === id) {
           this.database[group].splice(this.database[group].indexOf(this.database[group][entry]), 1);
-          this.database.metadata.totalItems--;
           return;
         };
       }

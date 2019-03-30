@@ -179,14 +179,17 @@ form input[type=number]::-webkit-outer-spin-button {
 }
 #inventory-item-editor {
   display: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
   background-color: #333334;
   border: 2px solid cadetblue;
-  padding: 5px;
+  padding: 5px 25px;
   border-radius: 10px;
   position: fixed;
   width: 70%;
+  max-height: 80%;
   left: 15%;
-  top: 20%;
+  top: 10%;
   z-index: 1;
 }
 #inventory-item-editor form {
