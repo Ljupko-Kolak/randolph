@@ -49,7 +49,12 @@
         countryTag: codeInput.value.toUpperCase(),
         city: cityInput.value,
         street: streetInput.value,
-        administrator: adminInput.value
+        administrator: {
+          name: adminInput.value,
+          googleAcc: null,
+          facebookAcc: null,
+          twitterAcc: null
+        }
       };
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {

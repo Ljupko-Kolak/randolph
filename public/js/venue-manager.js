@@ -18,15 +18,8 @@ function loadVenue(responseData) {
   document.getElementById("change-street").value = venue.street;
 
   loadInventory();
-
-  let staffList = document.getElementById("staff-list");
-  for (let i = 0; i < venue.staff.length; i++) {
-    staffList.innerHTML += venue.staff[i];
-  }
-  let adminsList = document.getElementById("admins-list");
-  for (let i = 0; i < venue.administrators.length; i++) {
-    adminsList.innerHTML += venue.administrators[i];
-  }
+  loadStaff();
+  loadAdmins();
 }
 function loadInventory() {
   let invList = document.getElementById("inv-list");
@@ -42,6 +35,74 @@ function loadInventory() {
   for (let i = 0; i < venue.inventory.items.length; i++) {
     let item = venue.inventory.items[i];
     invList.innerHTML += `<tr class="menu-item"><td>${item.id}</td><td>${item.name}</td><td>${item.amount}</td><td>${item.price}</td></tr>`;
+  };
+}
+function loadStaff() {
+  let staffList = document.getElementById("staff-list");
+  staffList.innerHTML = `<tr class="table-header">
+    <th>Name</th>
+    <th>G+</th>
+    <th>FB</th>
+    <th>Twitter</th>
+  </tr>
+  <tr>
+    <td id="staff-add" colspan="4">+</td>
+  </tr>`;
+  for (let i = 0; i < venue.staff.length; i++) {
+    let staffMember = venue.staff[i];
+    staffHTML = "";
+    staffHTML += `<tr class="staff-member"><td>${staffMember.name}</td>`;
+    if (staffMember.googleAcc) {
+      staffHTML += `<td>✓</td>`;
+    } else {
+      staffHTML += `<td>x</td>`;
+    }
+    if (staffMember.facebookAcc) {
+      staffHTML += `<td>✓</td>`;
+    } else {
+      staffHTML += `<td>x</td>`;
+    }
+    if (staffMember.twitterAcc) {
+      staffHTML += `<td>✓</td>`;
+    } else {
+      staffHTML += `<td>x</td>`;
+    }
+    staffHTML += "</tr>";
+    staffList.innerHTML += staffHTML;
+  };
+}
+function loadAdmins() {
+  let adminList = document.getElementById("admins-list");
+  adminList.innerHTML = `<tr class="table-header">
+    <th>Name</th>
+    <th>G+</th>
+    <th>FB</th>
+    <th>Twitter</th>
+  </tr>
+  <tr>
+    <td id="staff-add" colspan="4">+</td>
+  </tr>`;
+  for (let i = 0; i < venue.administrators.length; i++) {
+    let admin = venue.administrators[i];
+    let adminHTML = "";
+    adminHTML += `<tr class="administrator"><td>${admin.name}</td>`;
+    if (admin.googleAcc) {
+      adminHTML += `<td>✓</td>`;
+    } else {
+      adminHTML += `<td>x</td>`;
+    }
+    if (admin.facebookAcc) {
+      adminHTML += `<td>✓</td>`;
+    } else {
+      adminHTML += `<td>x</td>`;
+    }
+    if (admin.twitterAcc) {
+      adminHTML += `<td>✓</td>`;
+    } else {
+      adminHTML += `<td>x</td>`;
+    }
+    adminHTML += "</tr>";
+    adminList.innerHTML += adminHTML;
   };
 }
 function clearItemEditor() {
@@ -352,4 +413,5 @@ function clearItemEditor() {
       }
     }
   });
+
 })();

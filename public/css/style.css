@@ -243,12 +243,12 @@ tr:hover {
   color: black;
   background-color: greenyellow;
 }
-#inv-add {
+#inv-add, #staff-add, #admin-add {
   text-align: center;
   color: greenyellow;
   font-weight: bold;
 }
-#inv-add:hover {
+#inv-add:hover, #staff-add:hover, #admin-add:hover {
   color: black;
   background-color: greenyellow;
 }

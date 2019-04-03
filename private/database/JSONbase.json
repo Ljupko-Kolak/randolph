@@ -1,5 +1,5 @@
 {
-  "nextID": 1,
+  "nextID": 2,
   "venues": [
     {
       "name": "Golden Pub",
@@ -41,13 +41,43 @@
       },
       "orders": [],
       "administrators": [
-        "admin"
+        {
+          "name": "admin",
+          "googleAcc": null,
+          "facebookAcc": null,
+          "twitterAcc": null
+        }
       ],
       "staff": [],
       "map": null,
       "dateAdded": "2019|3|30-15:45:47:991",
       "lastUpdate": "2019|3|30-16:16:45:763",
       "ID": 0
+    },
+    {
+      "name": "Kod Crnog Mačka",
+      "countryCode": "BA",
+      "city": "Vitez",
+      "street": "Neka Ulica bb",
+      "isPublic": false,
+      "inventory": {
+        "nextID": 0,
+        "items": []
+      },
+      "orders": [],
+      "administrators": [
+        {
+          "name": "admin",
+          "googleAcc": null,
+          "facebookAcc": null,
+          "twitterAcc": null
+        }
+      ],
+      "staff": [],
+      "map": null,
+      "dateAdded": "2019|4|3-8:46:9:543",
+      "lastUpdate": "2019|4|3-8:46:9:543",
+      "ID": 1
     }
   ]
 }
